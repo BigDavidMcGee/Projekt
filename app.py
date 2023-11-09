@@ -22,9 +22,5 @@ def product2():
 def product3():
     return render_template('product3.html')
 
-@app.route('/login')
-def login():
-    return render_template('login.html')
-
 if __name__ == '__main__':
     app.run(debug=True)
