@@ -8,11 +8,11 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('index.html', user_logged_in = True)
+    return render_template('index.html', user_logged_in = False)
 
 @app.route('/login')
 def login():
-    
+
     return render_template('login.html')
 
 @app.route('/logout')
