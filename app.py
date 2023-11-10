@@ -15,6 +15,17 @@ def login():
 
     return render_template('login.html')
 
+email = None
+
+@app.route('/login_form', methods=['post'])
+def login_form():
+    global email
+    email = request.form.get('email')
+    username = request.form.get('username')
+    password = request.form.get('password')
+    password_confirmation = request.form.get('password_confirmation')
+    return redirect("/")
+
 @app.route('/logout')
 def logout():
     return redirect("/")
