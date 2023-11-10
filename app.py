@@ -11,8 +11,7 @@ app.secret_key = 'meow'
 def index():
     user_logged_in = session.get('logged_in', False)
     return render_template('index.html', user_logged_in=user_logged_in)
-    if user_logged_in == True:
-        @app.route('/') 
+    
 
 @app.route('/login')
 def login():
