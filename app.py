@@ -16,7 +16,6 @@ def index():
 @app.route('/login')
 def login():
     if session.get('logged_in', False):
-        # User is already logged in, redirect to the homepage
         return redirect('/')
     return render_template('login.html')
 
