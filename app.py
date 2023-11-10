@@ -1,18 +1,22 @@
-from flask import Flask
+from flask import Flask, session
 from flask import render_template
 from flask import request
 from flask import redirect
 import json
 
 app = Flask(__name__)
+app.secret_key = 'meow'
 
 @app.route('/')
 def index():
-    return render_template('index.html', user_logged_in = False)
+    user_logged_in = session.get('logged_in', False)
+    return render_template('index.html', user_logged_in=user_logged_in)
 
 @app.route('/login')
 def login():
-
+    if session.get('logged_in', False):
+        # User is already logged in, redirect to the homepage
+        return redirect('/')
     return render_template('login.html')
 
 email = None
@@ -24,11 +28,17 @@ def login_form():
     username = request.form.get('username')
     password = request.form.get('password')
     password_confirmation = request.form.get('password_confirmation')
+    
+    if email == 'example@example.com' and password == 'password':
+        session['logged_in'] = True
+    else:
+        session['logged_in'] = False
     return redirect("/")
 
 @app.route('/logout')
 def logout():
-    return redirect("/")
+    session['logged_in'] = False
+    return redirect('/')
 
 @app.route('/product1')
 def product1():
