@@ -21,19 +21,27 @@ def login():
 
 email = None
 
+
+
 @app.route('/login_form', methods=['post'])
 def login_form():
     global email
-    email = request.form.get('email')
     username = request.form.get('username')
     password = request.form.get('password')
-    password_confirmation = request.form.get('password_confirmation')
     
     if email == 'example@example.com' and password == 'password':
         session['logged_in'] = True
     else:
         session['logged_in'] = False
     return redirect("/")
+
+def save_login(username, password):
+    data = {"username": username, "password": password}
+    with open("login_data.json", "w") as file:
+        json.dump(data, file)
+    print("Login information saved successfully.")
+
+    save_login(username, password,email,)
 
 @app.route('/logout')
 def logout():
