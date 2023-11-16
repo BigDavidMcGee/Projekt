@@ -12,24 +12,18 @@ def index():
     user_logged_in = session.get('logged_in', False)
     return render_template('index.html', user_logged_in=user_logged_in)
     
-
 @app.route('/login')
 def login():
     if session.get('logged_in', False):
         return redirect('/')
     return render_template('login.html')
 
-email = None
-
-
-
 @app.route('/login_form', methods=['post'])
 def login_form():
-    global email
     username = request.form.get('username')
     password = request.form.get('password')
     
-    if email == 'example@example.com' and password == 'password':
+    if username == 'username' and password == 'password':
         session['logged_in'] = True
     else:
         session['logged_in'] = False
@@ -39,9 +33,7 @@ def save_login(username, password):
     data = {"username": username, "password": password}
     with open("login_data.json", "w") as file:
         json.dump(data, file)
-    print("Login information saved successfully.")
-
-    save_login(username, password,email,)
+    save_login(username, password)
 
 @app.route('/logout')
 def logout():
