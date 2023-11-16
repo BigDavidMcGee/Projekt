@@ -3,28 +3,60 @@
 <head>
     <title>Simple Webshop</title>
 </head>
+<style>
+    body {
+        text-align: center; 
+        margin: 20px;
+    }
+
+    h1 {
+        margin-bottom: 20px;
+    }
+
+    .product {
+        display: inline-block;
+        margin-right: 20px;
+        margin-bottom: 20px;
+        text-align: left; 
+    }
+
+    img {
+        display: block;
+        margin: 0 auto; 
+        margin-bottom: 10px;
+    }
+
+    a {
+        text-decoration: none; 
+    }
+
+    button {
+        padding: 10px;
+    }
+</style>
+</head>
 <body>
-    <h1>ONE PIECE!</h1>
-    <div class="product">
-        <a href="/product1"><img src="/static/product1.jpg" width="200" height="200" alt="Product 1"></a>
-        <p>Cool Luffy T-shirt </T-shirt></p>
-    </div>
-    <div class="product">
-        <a href="/product2"><img src="/static/product2.jpg" width="200" height="200" alt="Product 2"></a>
-        <p>Cool Zoro Hoodie</p>
-    </div>
-    <div class="product">
-        <a href="/product3"><img src="/static/product3.jpg" width="200" height="200" alt="Product 3"></a>
-        <p>Luffy's Hat</p>
-    </div>
-    {% if user_logged_in %}
-    <a href="/logout">
-        <button>Logout</button>
-    </a>
-    {% else %}
-    <a href="/login">
-        <button>Login</button>
-    </a>
-    {% endif %}
+<h1>ONE PIECE!</h1>
+<div class="product">
+    <a href="/product1"><img src="/static/product1.jpg" width="300" height="300" alt="Product 1"></a>
+    <p>Cool Luffy T-shirt</p>
+</div>
+<div class="product">
+    <a href="/product2"><img src="/static/product2.jpg" width="300" height="300" alt="Product 2"></a>
+    <p>Cool Zoro Hoodie</p>
+</div>
+<div class="product">
+    <a href="/product3"><img src="/static/product3.jpg" width="300" height="300" alt="Product 3"></a>
+    <p>Luffy's Hat</p>
+</div>
+{% if user_logged_in %}
+<a href="/logout">
+    <button>Logout</button>
+</a>
+{% else %}
+<a href="/login">
+    <button>Login</button>
+</a>
+{% endif %}
 </body>
 </html>
