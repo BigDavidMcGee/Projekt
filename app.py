@@ -52,5 +52,9 @@ def product2():
 def product3():
     return render_template('product3.html')
 
+@app.route('/product4')
+def product4():
+    return render_template('product4.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
